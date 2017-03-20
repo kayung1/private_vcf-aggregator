@@ -1,0 +1,53 @@
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+	 <parent>
+        <groupId>com.pluribus.vcf</groupId>
+        <artifactId>valhalla</artifactId>
+        <version>2.2.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>vcf-aggregator</artifactId>
+    <packaging>pom</packaging>
+    <name>aggregator</name>
+
+
+    <dependencies>
+       <!--dependency>
+            <groupId>com.pluribus.vcf</groupId>
+            <artifactId>vcf-common</artifactId>
+            <version>2.2.0-SNAPSHOT</version>
+       </dependency-->
+       <dependency>
+            <groupId>com.pluribus.vcf</groupId>
+            <artifactId>aggregator</artifactId>
+            <version>2.2.0-SNAPSHOT</version>
+            <type>jar</type>
+            <scope>runtime</scope>
+        </dependency>
+    </dependencies>
+
+   	 <build>
+        <finalName>aggregator</finalName>
+        <plugins>
+            <plugin>
+                <groupId>io.fabric8</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <configuration>
+                    <skip>false</skip>
+                     <images>
+                        <image>
+                            <run>
+                                <ports>
+                                    <port>5603:5603</port>
+                                </ports>
+                            </run>
+                        </image>
+                    </images>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
